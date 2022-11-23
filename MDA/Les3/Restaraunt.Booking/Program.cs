@@ -2,6 +2,7 @@
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Restaurant.Booking.Consumers;
+using Restaurant.Messages.InMemoryDb;
 
 namespace Restaurant.Booking
 {
@@ -63,6 +64,7 @@ namespace Restaurant.Booking
                     services.AddTransient<RestaurantBooking>();
                     services.AddTransient<RestaurantBookingSaga>();
                     services.AddTransient<Restaurant>();
+                    services.AddSingleton<IInMemoryRepository<BookingRequestModel>, InMemoryRepository<BookingRequestModel>>();
 
                     services.AddHostedService<Worker>();
                 });
