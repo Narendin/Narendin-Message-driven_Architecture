@@ -15,6 +15,16 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Restourant.Notifications_V2
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SettingRabbit", "SettingRabbit\SettingRabbit.csproj", "{D6648AD0-22CC-4DFF-9357-62A32EB1EA52}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Les3", "Les3", "{5320C132-1A87-4260-A3F3-A5CB13B53CF8}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Restaurant.Booking", "Les3\Restaraunt.Booking\Restaurant.Booking.csproj", "{92DB2044-6CA7-47DD-BDB1-E0481AB8F1FC}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Restaurant.Kitchen", "Les3\Restaurant.Kitchen\Restaurant.Kitchen.csproj", "{5BDD765F-57BD-4732-9312-6957C06FB9D4}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Restaurant.Messages", "Les3\Restaurant.Messages\Restaurant.Messages.csproj", "{9DC677C2-6FA0-450F-8B24-9B6502A67CB3}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Restaurant.Notification", "Les3\Restaurant.Notification\Restaurant.Notification.csproj", "{C6527504-2B03-41A3-A614-8DECA7FAF37F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -45,9 +55,31 @@ Global
 		{D6648AD0-22CC-4DFF-9357-62A32EB1EA52}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D6648AD0-22CC-4DFF-9357-62A32EB1EA52}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D6648AD0-22CC-4DFF-9357-62A32EB1EA52}.Release|Any CPU.Build.0 = Release|Any CPU
+		{92DB2044-6CA7-47DD-BDB1-E0481AB8F1FC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{92DB2044-6CA7-47DD-BDB1-E0481AB8F1FC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{92DB2044-6CA7-47DD-BDB1-E0481AB8F1FC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{92DB2044-6CA7-47DD-BDB1-E0481AB8F1FC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5BDD765F-57BD-4732-9312-6957C06FB9D4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5BDD765F-57BD-4732-9312-6957C06FB9D4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5BDD765F-57BD-4732-9312-6957C06FB9D4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5BDD765F-57BD-4732-9312-6957C06FB9D4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9DC677C2-6FA0-450F-8B24-9B6502A67CB3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9DC677C2-6FA0-450F-8B24-9B6502A67CB3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9DC677C2-6FA0-450F-8B24-9B6502A67CB3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9DC677C2-6FA0-450F-8B24-9B6502A67CB3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C6527504-2B03-41A3-A614-8DECA7FAF37F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C6527504-2B03-41A3-A614-8DECA7FAF37F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C6527504-2B03-41A3-A614-8DECA7FAF37F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C6527504-2B03-41A3-A614-8DECA7FAF37F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{92DB2044-6CA7-47DD-BDB1-E0481AB8F1FC} = {5320C132-1A87-4260-A3F3-A5CB13B53CF8}
+		{5BDD765F-57BD-4732-9312-6957C06FB9D4} = {5320C132-1A87-4260-A3F3-A5CB13B53CF8}
+		{9DC677C2-6FA0-450F-8B24-9B6502A67CB3} = {5320C132-1A87-4260-A3F3-A5CB13B53CF8}
+		{C6527504-2B03-41A3-A614-8DECA7FAF37F} = {5320C132-1A87-4260-A3F3-A5CB13B53CF8}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {0DAD1F22-FBCD-4C6C-BD9F-C571CCFA1060}
