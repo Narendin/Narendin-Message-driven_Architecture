@@ -19,7 +19,11 @@ namespace Restaurant.Kitchen
                 {
                     services.AddMassTransit(x =>
                     {
-                        x.AddConsumer<KitchenBookingRequestedConsumer>();
+                        x.AddConsumer<KitchenBookingRequestedConsumer>()
+                        .Endpoint(e =>
+                        {
+                            e.Temporary = true;
+                        });
 
                         x.AddDelayedMessageScheduler();
 
