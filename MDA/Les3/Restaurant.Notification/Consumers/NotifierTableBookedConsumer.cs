@@ -5,7 +5,7 @@ using Restaurant.Messages;
 
 namespace Restaurant.Notification.Consumers;
 
-public class NotifierTableBookedConsumer : IConsumer<ITableBooked>
+public class NotifierTableBookedConsumer : IConsumer<INotify>
 {
     private readonly Notifier _notifier;
 
@@ -14,11 +14,10 @@ public class NotifierTableBookedConsumer : IConsumer<ITableBooked>
         _notifier = notifier;
     }
 
-    public Task Consume(ConsumeContext<ITableBooked> context)
+    public Task Consume(ConsumeContext<INotify> context)
     {
-       _notifier.Accept(context.Message.OrderId, context.Message.Success, context.Message.NumberTable,
-           context.Message.ClientId);
+        _notifier.Notify(context.Message.OrderId, context.Message.ClientId, context.Message.Message);
 
-       return Task.CompletedTask;
+        return context.ConsumeCompleted;
     }
 }

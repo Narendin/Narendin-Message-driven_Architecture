@@ -9,6 +9,7 @@ namespace Restaurant.Kitchen
     {
         public static void Main(string[] args)
         {
+            Console.OutputEncoding = System.Text.Encoding.UTF8;
             CreateHostBuilder(args).Build().Run();
         }
 
@@ -18,17 +19,19 @@ namespace Restaurant.Kitchen
                 {
                     services.AddMassTransit(x =>
                     {
-                        x.AddConsumer<KitchenTableBookedConsumer>();
+                        x.AddConsumer<KitchenBookingRequestedConsumer>();
+
+                        x.AddDelayedMessageScheduler();
 
                         x.UsingRabbitMq((context, cfg) =>
                         {
+                            cfg.UseDelayedMessageScheduler();
+                            cfg.UseInMemoryOutbox();
                             cfg.ConfigureEndpoints(context);
                         });
                     });
 
                     services.AddSingleton<Manager>();
-
-                    services.AddMassTransitHostedService(true);
                 });
     }
 }

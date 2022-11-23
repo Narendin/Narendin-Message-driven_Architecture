@@ -14,8 +14,6 @@ namespace Restaurant.Booking
             {
                 _tables.Add(new Table(i));
             }
-
-            FreeTables(_freeTablesCancellationSource.Token);
         }
 
         async Task FreeTables(CancellationToken token)
@@ -68,40 +66,26 @@ namespace Restaurant.Booking
         /// Бронирование стола (Async)
         /// </summary>
         /// <param name="countOfPersons"></param>
-        public async Task<Accepted> BookFreeTableAsync(int numberTable)
+        public async Task<bool?> BookFreeTableAsync(int numberTable)
         {
             Console.WriteLine("Добрый день! Подождите секунду я подберу столик и подтвержу вашу бронь, вам придёт уведомление");
 
             var table = FindTable(numberTable, StateTable.Free);
-            if (table == null)
-            {
-                return Accepted.Rejected;
-            }
-            await Task.Delay(1000 * 5);
 
-            table.SetState(StateTable.Booked);
-
-            return Accepted.Booking;
+            return table?.SetState(StateTable.Booked);
         }
 
         /// <summary>
         /// Отмена брони стола (Async)
         /// </summary>
         /// <param name="id">Id Стола</param>
-        public async Task<Accepted> FreeTableAsync(int id)
+        public async Task<bool?> FreeTableAsync(int id)
         {
             Console.WriteLine("Добрый день! Подождите секунду я освобожу столик, вам придёт уведомление");
 
             var table = FindTable(id, StateTable.Booked);
-            if (table == null)
-            {
-                return Accepted.TableNotFound;
-            }
-            await Task.Delay(1000 * 5);
 
-            table.SetState(StateTable.Free);
-
-            return Accepted.CancelBooking;
+            return table?.SetState(StateTable.Free);
         }
     }
 }

@@ -1,6 +1,7 @@
 ﻿using MassTransit;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Restaurant.Booking.Consumers;
 
 namespace Restaurant.Booking
 {
@@ -18,13 +19,23 @@ namespace Restaurant.Booking
                 {
                     services.AddMassTransit(x =>
                     {
+                        x.AddConsumer<RestaurantBookingRequestConsumer>();
+
+                        x.AddSagaStateMachine<RestaurantBookingSaga, RestaurantBooking>()
+                            .InMemoryRepository();
+
+                        x.AddDelayedMessageScheduler();
+
                         x.UsingRabbitMq((context, cfg) =>
                         {
+                            cfg.UseDelayedMessageScheduler();
+                            cfg.UseInMemoryOutbox();
                             cfg.ConfigureEndpoints(context);
                         });
                     });
-                    services.AddMassTransitHostedService(true);
 
+                    services.AddTransient<RestaurantBooking>();
+                    services.AddTransient<RestaurantBookingSaga>();
                     services.AddTransient<Restaurant>();
 
                     services.AddHostedService<Worker>();

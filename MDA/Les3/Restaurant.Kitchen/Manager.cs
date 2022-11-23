@@ -12,9 +12,9 @@ namespace Restaurant.Kitchen
             _bus = bus;
         }
 
-        public void CheckKitchenReady(Guid orderId, int numberTable, Dish? dish)
+        public bool CheckKitchenReady(Guid orderId, Dish? dish)
         {
-            _bus.Publish<IKitchenReady>(new KitchenReady(orderId, numberTable, true));
+            return true;
         }
     }
 }

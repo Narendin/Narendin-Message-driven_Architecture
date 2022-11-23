@@ -4,7 +4,7 @@ using Restaurant.Messages;
 
 namespace Restaurant.Notification.Consumers
 {
-    public class KitchenReadyConsumer : IConsumer<IKitchenReady>
+    public class KitchenReadyConsumer : IConsumer<INotify>
     {
 
         private readonly Notifier _notifier;
@@ -14,23 +14,23 @@ namespace Restaurant.Notification.Consumers
             _notifier = notifier;
         }
 
-        public Task Consume(ConsumeContext<IKitchenReady> context)
+        public Task Consume(ConsumeContext<INotify> context)
         {
             var rnd = new Random();
 
-            if (context.Message.NumberTable == 5)
-            {
-                _notifier.Accept(context.Message.OrderId, Accepted.TableIsBroken);  // Почему то кухня знает что 5й стол сломан, а ресторан нет)
-                return Task.CompletedTask;
-            }
+            //if (context.Message.NumberTable == 5)
+            //{
+            //    _notifier.Accept(context.Message.OrderId, Accepted.TableIsBroken);  // Почему то кухня знает что 5й стол сломан, а ресторан нет)
+            //    return Task.CompletedTask;
+            //}
 
             if (rnd.Next(6) == 1)  //случайная поломка
             {
-                _notifier.Accept(context.Message.OrderId, Accepted.KitchenFire);
+                _notifier.Notify(context.Message.OrderId, context.Message.ClientId, context.Message.Message);
             }
             else
             {
-                _notifier.Accept(context.Message.OrderId, Accepted.Kitchen);
+                _notifier.Notify(context.Message.OrderId, context.Message.ClientId, context.Message.Message);
             }
 
             return Task.CompletedTask;

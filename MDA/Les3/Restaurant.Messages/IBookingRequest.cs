@@ -1,33 +1,31 @@
-﻿namespace Restaurant.Messages
+﻿using System;
+
+namespace Restaurant.Messages
 {
-    public interface ITableBooked
+    public interface IBookingRequest
     {
         public Guid OrderId { get; }
 
         public Guid ClientId { get; }
 
-        public bool Success { get; }
+        public Dish? PreOrder { get; }
 
         public DateTime CreationDate { get; }
-
-        public Dish? PreOrder { get; }
     }
 
-    public class TableBooked : ITableBooked
+    public class BookingRequest : IBookingRequest
     {
-        public TableBooked(Guid orderId, Guid clientId, Dish? preOrder, bool success)
+        public BookingRequest(Guid orderId, Guid clientId, Dish? preOrder, DateTime creationDate)
         {
             OrderId = orderId;
             ClientId = clientId;
             PreOrder = preOrder;
-            Success = success;
+            CreationDate = creationDate;
         }
 
         public Guid OrderId { get; }
-
         public Guid ClientId { get; }
         public Dish? PreOrder { get; }
-        public bool Success { get; }
         public DateTime CreationDate { get; }
     }
 }
