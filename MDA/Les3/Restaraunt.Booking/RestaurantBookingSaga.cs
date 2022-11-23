@@ -1,5 +1,5 @@
 ﻿using System;
-//using Automatonymous;
+using Automatonymous;
 using MassTransit;
 using Restaurant.Booking.Consumers;
 using Restaurant.Messages;
@@ -28,6 +28,10 @@ namespace Restaurant.Booking
             CompositeEvent(() => BookingApproved, 
                 x => x.ReadyEventStatus, KitchenReady, TableBooked);
 
+            Event(() => BookingRequestFault,
+                x =>
+                    x.CorrelateById(m => m.Message.Message.OrderId));
+
             Initially(
                 When(BookingRequested)
                     .Then(context =>
@@ -47,13 +51,22 @@ namespace Restaurant.Booking
                            context.Saga.OrderId,
                            context.Saga.ClientId,
                            $"Стол успешно забронирован")) 
-                    .Finalize()
+                    .Finalize(),
+                When(BookingRequestFault)
+                .Then(context => Console.WriteLine("Кухня сгорела!"))
+                .Publish(context =>
+                    (INotify)new Notify(
+                        context.Saga.OrderId,
+                        context.Saga.ClientId,
+                        $"Приносим извинения, ресторан не работает."))
+                .Finalize()
             );
 
             SetCompletedWhenFinalized();
         }
         public State AwaitingBookingApproved { get; private set; }
         public Event<IBookingRequest> BookingRequested { get; private set; }
+        public Event<Fault<IBookingRequest>> BookingRequestFault { get; private set;  }
         public Event<ITableBooked> TableBooked { get; private set; }
         public Event<IKitchenReady> KitchenReady { get; private set; }
         public Event BookingApproved { get; private set;  }

@@ -1,5 +1,4 @@
 ﻿using MassTransit;
-using MassTransit.RabbitMqTransport;
 using Restaurant.Messages;
 
 namespace Restaurant.Booking.Consumers
@@ -15,6 +14,12 @@ namespace Restaurant.Booking.Consumers
 
         public async Task Consume(ConsumeContext<IBookingRequest> context)
         {
+            var rnd = new Random().Next(1, 10);
+            if (rnd > 8)
+            {
+                throw new Exception("Ошибка!");
+            }
+
             Console.WriteLine($"[OrderId: {context.Message.OrderId}]");
             var result = await _restaurant.BookFreeTableAsync(1);
 
