@@ -25,6 +25,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Restaurant.Messages", "Les3
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Restaurant.Notification", "Les3\Restaurant.Notification\Restaurant.Notification.csproj", "{C6527504-2B03-41A3-A614-8DECA7FAF37F}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Restaurant.Tests", "Les3\Restaurant.Tests\Restaurant.Tests.csproj", "{8D1A37D5-FCAD-4268-BC45-772154E17939}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -71,6 +73,10 @@ Global
 		{C6527504-2B03-41A3-A614-8DECA7FAF37F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C6527504-2B03-41A3-A614-8DECA7FAF37F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C6527504-2B03-41A3-A614-8DECA7FAF37F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8D1A37D5-FCAD-4268-BC45-772154E17939}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8D1A37D5-FCAD-4268-BC45-772154E17939}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8D1A37D5-FCAD-4268-BC45-772154E17939}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8D1A37D5-FCAD-4268-BC45-772154E17939}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

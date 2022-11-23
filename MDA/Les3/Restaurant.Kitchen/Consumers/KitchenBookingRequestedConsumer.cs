@@ -4,7 +4,7 @@ using Restaurant.Messages;
 
 namespace Restaurant.Kitchen.Consumers
 {
-    internal class KitchenBookingRequestedConsumer : IConsumer<ITableBooked>
+    public class KitchenBookingRequestedConsumer : IConsumer<ITableBooked>
     {
         private readonly Manager _manager;
 
