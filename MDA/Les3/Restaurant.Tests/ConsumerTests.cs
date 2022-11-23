@@ -1,11 +1,6 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using MassTransit;
 using MassTransit.Testing;
 using Microsoft.Extensions.DependencyInjection;
-using NUnit.Framework;
 using Restaurant.Booking.Consumers;
 using Restaurant.Messages;
 using Restaurant.Messages.InMemoryDb;
@@ -24,7 +19,6 @@ namespace Restaurant.Tests
             throw new NotImplementedException();
         }
     }
-
 
     [TestFixture]
     public class ConsumerTests
@@ -56,7 +50,6 @@ namespace Restaurant.Tests
             await _harness.OutputTimeline(TestContext.Out, options => options.Now().IncludeAddress());
             await _provider.DisposeAsync();
         }
-
 
         [Test]
         public async Task Any_booking_request_consumed()

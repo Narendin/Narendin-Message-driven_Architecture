@@ -1,11 +1,11 @@
 ﻿using MassTransit;
 using MassTransit.Audit;
-using Microsoft.Extensions.DependencyInjection;
-using Restaurant.Booking.Consumers;
-using Restaurant.Messages.InMemoryDb;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.Extensions.DependencyInjection;
 using Prometheus;
+using Restaurant.Booking.Consumers;
+using Restaurant.Messages.InMemoryDb;
 
 namespace Restaurant.Booking
 {
@@ -67,6 +67,5 @@ namespace Restaurant.Booking
                 endpoints.MapControllers();
             });
         }
-
     }
 }

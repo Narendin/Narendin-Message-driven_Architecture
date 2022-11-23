@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace Restaurant.Messages
+﻿namespace Restaurant.Messages
 {
     public interface INotify
     {
@@ -24,5 +22,4 @@ namespace Restaurant.Messages
         public Guid ClientId { get; }
         public string Message { get; }
     }
-    
 }

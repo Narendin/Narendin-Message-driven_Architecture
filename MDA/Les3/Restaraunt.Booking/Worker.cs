@@ -1,8 +1,4 @@
-using System;
-using System.Threading;
-using System.Threading.Tasks;
 using MassTransit;
-using MassTransit.RabbitMqTransport;
 using Microsoft.Extensions.Hosting;
 using Restaurant.Messages;
 
@@ -47,13 +43,16 @@ namespace Restaurant.Booking
                         Console.WriteLine("IBookingRequest");
                         await _bus.Publish(new BookingRequest(Guid.NewGuid(), Guid.NewGuid(), null, dateTime), stoppingToken);
                         break;
+
                     case (int)UserAnswer.CancelBookingAsync:
                         Console.WriteLine("Укажите номер столика");
                         int.TryParse(Console.ReadLine(), out tableId);
                         break;
+
                     case (int)UserAnswer.ShowAllTable:
                         _restaurant.ShowTable();
                         break;
+
                     default:
                         break;
                 }

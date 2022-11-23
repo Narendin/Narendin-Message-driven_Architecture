@@ -1,7 +1,4 @@
-﻿using Restaurant.Messages;
-using System.Collections.Concurrent;
-
-namespace Restaurant.Notification
+﻿namespace Restaurant.Notification
 {
     public class Notifier
     {
@@ -9,6 +6,5 @@ namespace Restaurant.Notification
         {
             Console.WriteLine($"[OrderID: {orderId}] Уважаемый клиент {clientId}! {message}");
         }
-
     }
 }

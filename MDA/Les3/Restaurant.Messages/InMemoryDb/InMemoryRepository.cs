@@ -4,7 +4,7 @@ namespace Restaurant.Messages.InMemoryDb
 {
     public class InMemoryRepository<T> : IInMemoryRepository<T> where T : class
     {
-        private readonly ConcurrentBag<T> _repo = new ();
+        private readonly ConcurrentBag<T> _repo = new();
 
         public void AddOrUpdate(T entity)
         {

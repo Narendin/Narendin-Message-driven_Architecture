@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace Restaurant.Messages
+﻿namespace Restaurant.Messages
 {
     public interface IBookingRequest
     {
