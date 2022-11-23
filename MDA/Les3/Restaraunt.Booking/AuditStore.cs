@@ -1,7 +1,6 @@
-﻿using System.Text.Json;
-using System.Threading.Tasks;
-using MassTransit.Audit;
+﻿using MassTransit.Audit;
 using Microsoft.Extensions.Logging;
+using System.Text.Json;
 
 namespace Restaurant.Booking;
 

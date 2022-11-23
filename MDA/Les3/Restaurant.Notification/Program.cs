@@ -33,7 +33,6 @@ namespace Restaurant.Notification
                                 r.Ignore<ArgumentNullException>(x => x.Message.Contains("Consumer"));
                             });
 
-
                             cfg.ConfigureEndpoints(context);
                         });
                     });

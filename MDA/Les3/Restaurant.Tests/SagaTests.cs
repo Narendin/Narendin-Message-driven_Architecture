@@ -1,9 +1,6 @@
-﻿using System;
-using System.Threading.Tasks;
-using MassTransit;
+﻿using MassTransit;
 using MassTransit.Testing;
 using Microsoft.Extensions.DependencyInjection;
-using NUnit.Framework;
 using Restaurant.Booking;
 using Restaurant.Booking.Consumers;
 using Restaurant.Kitchen;
@@ -77,10 +74,7 @@ namespace Restaurant.Tests
 
             Assert.That(saga, Is.Not.Null);
             Assert.That(saga.ClientId, Is.EqualTo(clientId));
-            //Assert.That(await _harness.Published.Any<ITableBooked>());
-            //Assert.That(await _harness.Published.Any<IKitchenReady>());
             Assert.That(await _harness.Published.Any<INotify>());
-            //Assert.That(saga.CurrentState, Is.EqualTo(3));
 
             await _harness.OutputTimeline(TestContext.Out, options => options.Now().IncludeAddress());
         }

@@ -1,6 +1,4 @@
-﻿using Restaurant.Messages;
-
-namespace Restaurant.Booking
+﻿namespace Restaurant.Booking
 {
     public class Restaurant
     {
@@ -16,7 +14,7 @@ namespace Restaurant.Booking
             }
         }
 
-        async Task FreeTables(CancellationToken token)
+        private async Task FreeTables(CancellationToken token)
         {
             while (await _timer.WaitForNextTickAsync(token))
             {
@@ -46,7 +44,7 @@ namespace Restaurant.Booking
         /// </summary>
         /// <param name="countOfPersons">Количество персон</param>
         /// <returns></returns>
-        Table? FindFreeTable(int countOfPersons)
+        private Table? FindFreeTable(int countOfPersons)
         {
             return _tables.FirstOrDefault(t => t.SeatsCount >= countOfPersons && t.State == StateTable.Free);
         }
@@ -57,7 +55,7 @@ namespace Restaurant.Booking
         /// <param name="id">Id стола</param>
         /// <param name="stateTable">Статус стола</param>
         /// <returns></returns>
-        Table? FindTable(int id, StateTable stateTable)
+        private Table? FindTable(int id, StateTable stateTable)
         {
             return _tables.FirstOrDefault(t => t.Id == id && t.State == stateTable);
         }

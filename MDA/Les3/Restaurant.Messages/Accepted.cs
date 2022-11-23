@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace Restaurant.Messages
+﻿namespace Restaurant.Messages
 {
     [Flags]
     public enum Accepted

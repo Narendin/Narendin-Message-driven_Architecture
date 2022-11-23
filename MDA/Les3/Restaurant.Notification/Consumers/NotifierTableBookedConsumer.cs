@@ -1,6 +1,4 @@
-﻿using System;
-using System.Threading.Tasks;
-using MassTransit;
+﻿using MassTransit;
 using Restaurant.Messages;
 
 namespace Restaurant.Notification.Consumers;

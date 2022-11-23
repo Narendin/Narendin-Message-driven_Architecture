@@ -1,5 +1,4 @@
-﻿using System.Threading.Tasks;
-using MassTransit;
+﻿using MassTransit;
 using Restaurant.Messages;
 
 namespace Restaurant.Kitchen.Consumers
@@ -15,7 +14,7 @@ namespace Restaurant.Kitchen.Consumers
 
         public async Task Consume(ConsumeContext<ITableBooked> context)
         {
-            var rnd = new Random().Next(1,10);
+            var rnd = new Random().Next(1, 10);
             if (rnd > 8)
             {
                 throw new Exception("Пожар!");

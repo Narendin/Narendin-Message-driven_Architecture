@@ -1,7 +1,4 @@
-﻿using System;
-using Automatonymous;
-using MassTransit;
-using Restaurant.Booking.Consumers;
+﻿using MassTransit;
 using Restaurant.Messages;
 
 namespace Restaurant.Booking
@@ -16,16 +13,16 @@ namespace Restaurant.Booking
                 x =>
                     x.CorrelateById(context => context.Message.OrderId)
                         .SelectId(context => context.Message.OrderId));
-            
+
             Event(() => TableBooked,
                 x =>
                     x.CorrelateById(context => context.Message.OrderId));
 
-            Event(() => KitchenReady, 
+            Event(() => KitchenReady,
                 x =>
                     x.CorrelateById(context => context.Message.OrderId));
 
-            CompositeEvent(() => BookingApproved, 
+            CompositeEvent(() => BookingApproved,
                 x => x.ReadyEventStatus, KitchenReady, TableBooked);
 
             Event(() => BookingRequestFault,
@@ -47,10 +44,10 @@ namespace Restaurant.Booking
             During(AwaitingBookingApproved,
                 When(BookingApproved)
                     .Publish(context =>
-                       (INotify) new Notify(
+                       (INotify)new Notify(
                            context.Saga.OrderId,
                            context.Saga.ClientId,
-                           $"Стол успешно забронирован")) 
+                           $"Стол успешно забронирован"))
                     .Finalize(),
                 When(BookingRequestFault)
                 .Then(context => Console.WriteLine("Кухня сгорела!"))
@@ -66,9 +63,9 @@ namespace Restaurant.Booking
         }
         public State AwaitingBookingApproved { get; private set; }
         public Event<IBookingRequest> BookingRequested { get; private set; }
-        public Event<Fault<IBookingRequest>> BookingRequestFault { get; private set;  }
+        public Event<Fault<IBookingRequest>> BookingRequestFault { get; private set; }
         public Event<ITableBooked> TableBooked { get; private set; }
         public Event<IKitchenReady> KitchenReady { get; private set; }
-        public Event BookingApproved { get; private set;  }
+        public Event BookingApproved { get; private set; }
     }
 }
